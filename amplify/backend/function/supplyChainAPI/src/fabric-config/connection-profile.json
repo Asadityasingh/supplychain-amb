@@ -1,0 +1,70 @@
+{
+  "name": "supplychain-network",
+  "version": "1.0.0",
+  "client": {
+    "organization": "Org1",
+    "connection": {
+      "timeout": {
+        "peer": {
+          "endorser": "300s",
+          "eventHub": "300s"
+        },
+        "orderer": "300s"
+      }
+    }
+  },
+  "organizations": {
+    "Org1": {
+      "mspid": "Org1MSP",
+      "peers": [
+        "peer0.org1.example.com"
+      ],
+      "certificateAuthorities": [
+        "ca.org1.example.com"
+      ]
+    }
+  },
+  "peers": {
+    "peer0.org1.example.com": {
+      "url": "grpcs://nd-xaiao3kjsvd7hjur5a6rpfhl6i.m-i5mmo373lffuthpslbocegjrkm.n-ozfgrzjblfgavhtmceacicx35u.managedblockchain.us-east-1.amazonaws.com:30003",
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\n[CA_CERT_HERE]\n-----END CERTIFICATE-----"
+      }
+    }
+  },
+  "orderers": {
+    "orderer.example.com": {
+      "url": "grpcs://orderer.n-ozfgrzjblfgavhtmceacicx35u.managedblockchain.us-east-1.amazonaws.com:30001",
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\n[CA_CERT_HERE]\n-----END CERTIFICATE-----"
+      }
+    }
+  },
+  "certificateAuthorities": {
+    "ca.org1.example.com": {
+      "url": "https://ca.m-i5mmo373lffuthpslbocegjrkm.n-ozfgrzjblfgavhtmceacicx35u.managedblockchain.us-east-1.amazonaws.com:30002",
+      "caName": "ca-org1",
+      "tlsCACerts": {
+        "pem": "[CA_CERT_HERE]"
+      },
+      "httpOptions": {
+        "verify": false
+      }
+    }
+  },
+  "channels": {
+    "mychannel": {
+      "orderers": [
+        "orderer.example.com"
+      ],
+      "peers": {
+        "peer0.org1.example.com": {
+          "endorsingPeer": true,
+          "chaincodeQuery": true,
+          "ledgerQuery": true,
+          "eventSource": true
+        }
+      }
+    }
+  }
+}

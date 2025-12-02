@@ -1,0 +1,62 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+build/
+dist/
+
+# Environment files
+.env
+.env.local
+.env.production.local
+
+# AWS Amplify
+amplify/.config/
+amplify/mock-data/
+amplify/backend/awscloudformation/
+amplify/#current-cloud-backend/
+
+# Certificates (sensitive)
+certs/*.pem
+*.pem
+*_sk
+*.key
+
+# AWS credentials
+.aws/
+aws-exports.js
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+
+# EC2 keys
+*.pem
+blockchain-key.pem
+
+# Fabric binaries
+bin/
+fabric-samples/
+
+# Test files
+test-certs/
+
+# Misc
+response.json
+report.txt
+blockchain-creation.log
+instance-id.txt

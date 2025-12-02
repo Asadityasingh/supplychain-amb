@@ -1,0 +1,124 @@
+{
+  "api": {},
+  "function": {
+    "supplyChainAPI": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_supplyChainAPI_caEndpoint": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "supplyChainAPI"
+        }
+      ]
+    },
+    "AMPLIFY_function_supplyChainAPI_caTlsCert": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "supplyChainAPI"
+        }
+      ]
+    },
+    "AMPLIFY_function_supplyChainAPI_chaincodeName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "supplyChainAPI"
+        }
+      ]
+    },
+    "AMPLIFY_function_supplyChainAPI_channelName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "supplyChainAPI"
+        }
+      ]
+    },
+    "AMPLIFY_function_supplyChainAPI_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "supplyChainAPI"
+        }
+      ]
+    },
+    "AMPLIFY_function_supplyChainAPI_memberId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "supplyChainAPI"
+        }
+      ]
+    },
+    "AMPLIFY_function_supplyChainAPI_mspId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "supplyChainAPI"
+        }
+      ]
+    },
+    "AMPLIFY_function_supplyChainAPI_networkId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "supplyChainAPI"
+        }
+      ]
+    },
+    "AMPLIFY_function_supplyChainAPI_ordererEndpoint": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "supplyChainAPI"
+        }
+      ]
+    },
+    "AMPLIFY_function_supplyChainAPI_peerEndpoint": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "supplyChainAPI"
+        }
+      ]
+    },
+    "AMPLIFY_function_supplyChainAPI_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "supplyChainAPI"
+        }
+      ]
+    },
+    "AMPLIFY_function_supplyChainAPI_tlsCert": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "supplyChainAPI"
+        }
+      ]
+    },
+    "AMPLIFY_function_supplyChainAPI_userCert": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "supplyChainAPI"
+        }
+      ]
+    },
+    "AMPLIFY_function_supplyChainAPI_userPrivateKey": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "supplyChainAPI"
+        }
+      ]
+    }
+  }
+}

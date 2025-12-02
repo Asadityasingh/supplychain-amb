@@ -1,0 +1,28 @@
+{
+  "Name": "supplychain-fabric-v2",
+  "Description": "Supply Chain Blockchain Tracker v2",
+  "Framework": "HYPERLEDGER_FABRIC",
+  "FrameworkVersion": "2.2",
+  "FrameworkConfiguration": {
+    "Fabric": {
+      "Edition": "STARTER"
+    }
+  },
+  "VotingPolicy": {
+    "ApprovalThresholdPolicy": {
+      "ThresholdPercentage": 50,
+      "ProposalDurationInHours": 24,
+      "ThresholdComparator": "GREATER_THAN"
+    }
+  },
+  "MemberConfiguration": {
+    "Name": "Org1",
+    "Description": "Supply Chain Manufacturer Org",
+    "FrameworkConfiguration": {
+      "Fabric": {
+        "AdminUsername": "admin",
+        "AdminPassword": "Admin12345678"
+      }
+    }
+  }
+}

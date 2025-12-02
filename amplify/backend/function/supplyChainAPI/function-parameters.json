@@ -1,0 +1,53 @@
+{
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "peerEndpoint",
+      "environmentVariableName": "PEER_ENDPOINT"
+    },
+    {
+      "cloudFormationParameterName": "ordererEndpoint",
+      "environmentVariableName": "ORDERER_ENDPOINT"
+    },
+    {
+      "cloudFormationParameterName": "caEndpoint",
+      "environmentVariableName": "CA_ENDPOINT"
+    },
+    {
+      "cloudFormationParameterName": "channelName",
+      "environmentVariableName": "CHANNEL_NAME"
+    },
+    {
+      "cloudFormationParameterName": "chaincodeName",
+      "environmentVariableName": "CHAINCODE_NAME"
+    },
+    {
+      "cloudFormationParameterName": "mspId",
+      "environmentVariableName": "MSP_ID"
+    },
+    {
+      "cloudFormationParameterName": "memberId",
+      "environmentVariableName": "MEMBER_ID"
+    },
+    {
+      "cloudFormationParameterName": "networkId",
+      "environmentVariableName": "NETWORK_ID"
+    },
+    {
+      "cloudFormationParameterName": "userCert",
+      "environmentVariableName": "USER_CERT"
+    },
+    {
+      "cloudFormationParameterName": "userPrivateKey",
+      "environmentVariableName": "USER_PRIVATE_KEY"
+    },
+    {
+      "cloudFormationParameterName": "tlsCert",
+      "environmentVariableName": "TLS_CERT"
+    },
+    {
+      "cloudFormationParameterName": "caTlsCert",
+      "environmentVariableName": "CA_TLS_CERT"
+    }
+  ]
+}

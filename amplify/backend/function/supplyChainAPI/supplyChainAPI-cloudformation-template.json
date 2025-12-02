@@ -1,0 +1,304 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"Amplify\",\"createdWith\":\"14.2.3\",\"stackType\":\"function-Lambda\",\"metadata\":{\"whyContinueWithGen1\":\"Prefer not to answer\"}}",
+  "Parameters": {
+    "CloudWatchRule": {
+      "Type": "String",
+      "Default": "NONE",
+      "Description": " Schedule Expression"
+    },
+    "deploymentBucketName": {
+      "Type": "String"
+    },
+    "env": {
+      "Type": "String"
+    },
+    "s3Key": {
+      "Type": "String"
+    },
+    "peerEndpoint": {
+      "Type": "String",
+      "Default": "nd-zqx2ijvxhbcwzotry5kxm2kdva.m-ktgjmti7hfgtzku7ecmps4fquu.n-cfcacd47iza7dalldsyz32fuzy.managedblockchain.us-east-1.amazonaws.com:30003"
+    },
+    "ordererEndpoint": {
+      "Type": "String",
+      "Default": "orderer.n-cfcacd47iza7dalldsyz32fuzy.managedblockchain.us-east-1.amazonaws.com:30001"
+    },
+    "caEndpoint": {
+      "Type": "String",
+      "Default": "ca.m-ktgjmti7hfgtzku7ecmps4fquu.n-cfcacd47iza7dalldsyz32fuzy.managedblockchain.us-east-1.amazonaws.com:30002"
+    },
+    "channelName": {
+      "Type": "String",
+      "Default": "mychannel"
+    },
+    "chaincodeName": {
+      "Type": "String",
+      "Default": "supplychain"
+    },
+    "mspId": {
+      "Type": "String",
+      "Default": "Org1MSP"
+    },
+    "memberId": {
+      "Type": "String",
+      "Default": "m-KTGJMTI7HFGTZKU7ECMPS4FQUU"
+    },
+    "networkId": {
+      "Type": "String",
+      "Default": "n-CFCACD47IZA7DALLDSYZ32FUZY"
+    },
+    "userCert": {
+      "Type": "String",
+      "Default": ""
+    },
+    "userPrivateKey": {
+      "Type": "String",
+      "Default": ""
+    },
+    "tlsCert": {
+      "Type": "String",
+      "Default": ""
+    },
+    "caTlsCert": {
+      "Type": "String",
+      "Default": ""
+    }
+  },
+  "Conditions": {
+    "ShouldNotCreateEnvResources": {
+      "Fn::Equals": [
+        {
+          "Ref": "env"
+        },
+        "NONE"
+      ]
+    }
+  },
+  "Resources": {
+    "LambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Metadata": {
+        "aws:asset:path": "./src",
+        "aws:asset:property": "Code"
+      },
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": {
+            "Ref": "s3Key"
+          }
+        },
+        "Handler": "index.handler",
+        "FunctionName": {
+          "Fn::If": [
+            "ShouldNotCreateEnvResources",
+            "supplyChainAPI",
+            {
+              "Fn::Join": [
+                "",
+                [
+                  "supplyChainAPI",
+                  "-",
+                  {
+                    "Ref": "env"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "ENV": {
+              "Ref": "env"
+            },
+            "REGION": {
+              "Ref": "AWS::Region"
+            },
+            "PEER_ENDPOINT": {
+              "Ref": "peerEndpoint"
+            },
+            "ORDERER_ENDPOINT": {
+              "Ref": "ordererEndpoint"
+            },
+            "CA_ENDPOINT": {
+              "Ref": "caEndpoint"
+            },
+            "CHANNEL_NAME": {
+              "Ref": "channelName"
+            },
+            "CHAINCODE_NAME": {
+              "Ref": "chaincodeName"
+            },
+            "MSP_ID": {
+              "Ref": "mspId"
+            },
+            "MEMBER_ID": {
+              "Ref": "memberId"
+            },
+            "NETWORK_ID": {
+              "Ref": "networkId"
+            },
+            "USER_CERT": {
+              "Ref": "userCert"
+            },
+            "USER_PRIVATE_KEY": {
+              "Ref": "userPrivateKey"
+            },
+            "TLS_CERT": {
+              "Ref": "tlsCert"
+            },
+            "CA_TLS_CERT": {
+              "Ref": "caTlsCert"
+            }
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "LambdaExecutionRole",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs22.x",
+        "Layers": [],
+        "Timeout": 60,
+        "VpcConfig": {
+          "SecurityGroupIds": [
+            "sg-035d562b317e7ccb2"
+          ],
+          "SubnetIds": [
+            "subnet-0d38c80717a1ade86",
+            "subnet-04424a3e27545e05f"
+          ]
+        }
+      }
+    },
+    "LambdaExecutionRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "RoleName": {
+          "Fn::If": [
+            "ShouldNotCreateEnvResources",
+            "supplychainambLambdaRoled72725b1",
+            {
+              "Fn::Join": [
+                "",
+                [
+                  "supplychainambLambdaRoled72725b1",
+                  "-",
+                  {
+                    "Ref": "env"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "lambdaexecutionpolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "lambda-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Resource": {
+                "Fn::Sub": [
+                  "arn:aws:logs:${region}:${account}:log-group:/aws/lambda/${lambda}:log-stream:*",
+                  {
+                    "region": {
+                      "Ref": "AWS::Region"
+                    },
+                    "account": {
+                      "Ref": "AWS::AccountId"
+                    },
+                    "lambda": {
+                      "Ref": "LambdaFunction"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "ec2:CreateNetworkInterface",
+                "ec2:DescribeNetworkInterfaces",
+                "ec2:DeleteNetworkInterface"
+              ],
+              "Resource": "*"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "Name": {
+      "Value": {
+        "Ref": "LambdaFunction"
+      }
+    },
+    "Arn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "LambdaFunction",
+          "Arn"
+        ]
+      }
+    },
+    "Region": {
+      "Value": {
+        "Ref": "AWS::Region"
+      }
+    },
+    "LambdaExecutionRole": {
+      "Value": {
+        "Ref": "LambdaExecutionRole"
+      }
+    },
+    "LambdaExecutionRoleArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "LambdaExecutionRole",
+          "Arn"
+        ]
+      }
+    }
+  }
+}
