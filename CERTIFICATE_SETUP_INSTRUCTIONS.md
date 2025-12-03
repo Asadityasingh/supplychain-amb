@@ -96,7 +96,7 @@ Check AWS Managed Blockchain console for the correct admin password.
 Exit the EC2 instance and return to your local terminal, then run:
 
 ```bash
-cd /home/aditya/Documents/programming/Projects/supplychain-amb/scripts
+cd /home/my/path/of/Projects/supplychain-amb/scripts
 bash step4-upload-certs-to-lambda.sh
 ```
 
@@ -124,17 +124,3 @@ bash step4-upload-certs-to-lambda.sh
 ```
 
 ---
-
-## Status Checklist
-
-- [x] EC2 instance launched
-- [x] IAM role attached
-- [x] Script uploaded to S3
-- [ ] Connected to EC2
-- [ ] Certificates retrieved
-- [ ] Certificates uploaded to Lambda
-- [ ] Blockchain connected
-
----
-
-**Next:** Connect to EC2 using AWS Console and run the commands above!
