@@ -523,10 +523,6 @@ console.log('Debug:', JSON.stringify(event, null, 2));
 - Conventional Commits for commit messages
 - Unit tests for new features
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Support
 
 For issues and questions:
@@ -544,5 +540,5 @@ For issues and questions:
 ---
 
 **Version**: 1.1.0  
-**Last Updated**: 2025-11-03
+**Last Updated**: 2025-11-03  
 **Maintainer**: Aditya Singh as25822@gmail.ccom
